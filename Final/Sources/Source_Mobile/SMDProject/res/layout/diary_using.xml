@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
+        android:text="Danh sách đơn thuốc"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_red" />
+
+    <ListView
+        android:id="@+id/diaryUsingLv"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/customshape"
+        android:layout_marginLeft="5dp" 
+        android:layout_marginRight="5dp"/>
+
+    <Button
+        android:id="@+id/addNewDiaryBtn"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:padding="8dp"
+        android:background="@drawable/cell_shape"
+        android:text="Thêm Mới" />
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <ImageView
+            android:id="@+id/search_medicine"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="duToSearchMedicine"
+            android:scaleType="center"
+            android:src="@drawable/search_medicine_default" />
+
+        <ImageView
+            android:id="@+id/find_location"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="duToFindLocation"
+            android:scaleType="center"
+            android:src="@drawable/find_pharmacy_default" />
+
+        <ImageView
+            android:id="@+id/historical_using"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="duOnClick"
+            android:scaleType="center"
+            android:src="@drawable/medicine_diary" />
+
+        <ImageView
+            android:id="@+id/introduction"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="duToAboutUs"
+            android:scaleType="center"
+            android:src="@drawable/about_us_default" />
+    </LinearLayout>
+
+</LinearLayout>

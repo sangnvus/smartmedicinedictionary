@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.Pharmacy" table="pharmacy">
+	    <id name="pharmacyId" type="int">
+			<column name="PHARMACY_ID" />
+			<generator class="identity" />
+		</id>
+		<property name="deteleFlag" type="string">
+		    <column name="DELETE_FLAG" length="1" not-null="true" />
+		</property>
+		<property name="regDate" type="timestamp">
+			<column name="REG_DATE" />
+		</property>
+		<property name="modDate" type="timestamp">
+			<column name="MOD_DATE" />
+		</property>
+		<property name="regUser" type="string">
+			<column name="REG_USER" length="150" not-null="true"/>
+		</property>
+		<property name="modUser" type="string">
+			<column name="MOD_USER" length="150" not-null="true"/>
+		</property>
+		<property name="pharmacyName" type="string">
+			<column name="PHARMACY_NAME" length="200" not-null="true"/>
+		</property>
+		<property name="repId" type="int">
+		    <column name="REPRESENTATIVE_ID" not-null="true"/>
+		</property>
+		<property name="homePhone" type="string">
+			<column name="HOME_PHONE" length="10" not-null="true" />
+		</property>
+		<property name="businessLicenseNo" type="string">
+			<column name="BUSINESS_LICENSE_NO" length="100" not-null="true"/>
+		</property>
+		<property name="pharCompany" type="string">
+		    <column name="PHARMACEUTICAL_COMPANY" length="200" not-null="true"></column>
+		</property>
+		<property name="gppNo" type="string">
+		    <column name="GPP_NO" length="45" not-null="true"></column>
+		</property>
+		<property name="imgPath" type="string">
+			<column name="IMAGE_PATH" length="150"  not-null="false" />
+		</property>
+		<property name="videoPath" type="string">
+			<column name="VIDEO_PATH" length="150"  not-null="false" />
+		</property>
+		<property name="notes" type="string">
+			<column name="NOTES"  length="500" not-null="true" />
+		</property>
+		<property name="cityId" type="int">
+			<column name="CITY_ID"  not-null="true" />
+		</property>
+		<property name="cityName" type="string">
+			<column name="CITY_NAME" length="100" not-null="true" />
+		</property>
+		<property name="districtId" type="int">
+			<column name="DISTRICT_ID"  not-null="true" />
+		</property>
+		<property name="districtName" type="string">
+			<column name="DISTRICT_NAME" length="150"  not-null="true" />
+		</property>
+		<property name="street" type="string">
+			<column name="STREET" length="100"  not-null="true" />
+		</property>
+		<property name="houseNo" type="string">
+			<column name="HOUSE_NO" length="50"  not-null="true" />
+		</property>
+		<property name="lon" type="big_decimal">
+			<column name="LONGITUDE" not-null="true" />
+		</property>
+		<property name="lat" type="big_decimal">
+			<column name="LATITUDE" not-null="true" />
+		</property>
+		<property name="accepted" type="string">
+			<column name="ACCEPTED_FLAG" length="1"  not-null="true" />
+		</property>
+		<property name="typeOfBusiness" type="int">
+			<column name="TYPE_OF_BUSINESS" not-null="true" />
+		</property>
+		<property name="searchedTime" type="int">
+		    <column name="SEARCHED_TIME" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

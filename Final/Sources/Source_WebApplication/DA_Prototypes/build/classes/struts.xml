@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.action.excludePattern" value="/smdservice*"/>
+	<!-- <constant name="struts.action.extension" value="" /> -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<package name="default" extends="struts-default,json-default"
+		namespace="/">
+		<interceptors>
+			<interceptor name="visitTime"
+				class="com.med.dic.interceptor.CheckVisitorTimeSession" />
+			<interceptor-stack name="secureStack1">
+				<interceptor-ref name="visitTime" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor name="authenGroup2"
+				class="com.med.dic.interceptor.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack2">
+				<interceptor-ref name="authenGroup2" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="search_nearestPharmacy">
+			<interceptor-ref name="secureStack1" />
+			<result>/search_nearestPharmacy.jsp</result>
+		</action>
+		<action name="home" class="com.med.dic.action.SearchMedicineAction">
+			<!-- <interceptor-ref name="secureStack1" /> -->
+			<result>/home.jsp</result>
+		</action>
+		<action name="search_medicines">
+			<interceptor-ref name="secureStack1" />
+			<result>/search_medicines.jsp</result>
+		</action>
+		<action name="search_pharmacyInfo" class="com.med.dic.action.SearchPharmacyAction">
+			<!-- <interceptor-ref name="secureStack1" /> -->
+			<result>/search_pharmacyInfo.jsp</result>
+		</action>
+		<action name="register" class="com.med.dic.action.RegisterAction" method="logged">
+			<result>/register.jsp</result>
+		</action>
+		<action name="aboutUs">
+			<interceptor-ref name="secureStack1" />
+			<result>/aboutUs.jsp</result>
+		</action>
+		<action name="news" class="com.med.dic.action.DisplayNewsAction">
+			<!-- <interceptor-ref name="secureStack1" /> -->
+			<result>/news.jsp</result>
+		</action>
+		<action name="tin-tuc-chi-tiet" class="com.med.dic.action.DisplayNewsAction">
+		    <result name="success">/ViewNewsDetail.jsp</result>
+		</action>
+		<action name="ChangePassword">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup1">/ChangePassword.jsp</result>
+			<result name="userGroup2">/ChangePassword.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="AddNewMedicineByPharmacy">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/AddNewMedicineByPharmacy.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		
+		<!-- Pharmacy manages pharmacy information stard action -->
+		<action name="pharmacyDetail" class="com.med.dic.action.PharmacyInformationAction">
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="chinh-sua-thong-tin-hieu-thuoc-action" class="com.med.dic.action.PharmacyInformationAction">
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/pharmacy_registerNewMedicine.jsp</result>
+			<result name="input">/pharmacy_registerNewMedicine.jsp</result>
+		</action>
+		<action name="chinh-sua-thong-tin-hieu-thuoc" class="com.med.dic.action.PharmacyInformationAction"
+			method="execute">
+			<interceptor-ref name="fileUpload">
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/pharmacy_registerNewMedicine.jsp</result>
+		</action>
+		<action name="huy-bo-chinh-sua-thong-tin-hieu-thuoc" class="com.med.dic.action.PharmacyInformationAction">
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/pharmacy_registerNewMedicine.jsp</result>
+		</action>
+		<action name="danh-muc-thuoc" class="com.med.dic.action.PharmacyInformationAction">
+		     <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		     <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/pharmacy_registerNewMedicine.jsp</result>
+		</action>
+		<action name="danh-muc-thuoc-action" class="com.med.dic.action.PharmacyInformationAction">
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="login">/Login.jsp</result>
+			<result name="success">/pharmacy_registerNewMedicine.jsp</result>
+		</action>
+		<!-- Pharmacy manages pharmacy information end action -->
+		
+		<action name="Login">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="ResetPassword">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="login">/ResetPassword.jsp</result>
+		</action>
+		<action name="admin_news">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_news.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		
+		<!-- Accept Pharmacy start action -->
+		<action name="admin_pharmacyManagement">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_pharmacyManagement.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="tra-cuu-nha-thuoc" class="com.med.dic.action.PharmacyAdminAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_pharmacyManagement.jsp</result>
+		</action>
+		<action name="adSearchPharAdvancedAction" class="com.med.dic.action.PharmacyAdminAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_pharmacyManagement.jsp</result>
+			<result name="userGroup1">/admin_pharmacyManagement.jsp</result>
+		</action>
+		<action name="kiem-duyet-nha-thuoc" class="com.med.dic.action.PharmacyAdminAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_pharmacyManagement.jsp</result>
+			<result name="userGroup1">/admin_pharmacyManagement.jsp</result>
+		</action>
+		<action name="huy-kiem-duyet-nha-thuoc" class="com.med.dic.action.PharmacyAdminAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_pharmacyManagement.jsp</result>
+			<result name="userGroup1">/admin_pharmacyManagement.jsp</result>
+		</action>
+		<action name="quan-ly-thong-tin-nha-thuoc-chi-tiet" class="com.med.dic.action.PharmacyAdminAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_pharmacyManagement.jsp</result>
+			<result name="userGroup1">/admin_pharmacyManagement.jsp</result>
+		</action>
+		<action name="khoi-phuc-nha-thuoc" class="com.med.dic.action.PharmacyAdminAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+		    <result name="success">/admin_pharmacyManagement.jsp</result>
+		    <result name="userGroup1">/admin_pharmacyManagement.jsp</result>
+		</action>
+		<action name="xoa-nha-thuoc" class="com.med.dic.action.PharmacyAdminAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+		    <result name="success">/admin_pharmacyManagement.jsp</result>
+		    <result name="userGroup1">/admin_pharmacyManagement.jsp</result>
+		</action>
+		<!-- Accept Pharmacy end action -->	
+	
+		<action name="RepresentativeInfor">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="login">/Login.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+		</action>
+		<!-- <action name="EmailForm">
+			<result>/EmailForm.jsp</result>
+		</action>
+		<action name="pharmacy_info">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/pharmacy_info.jsp</result>
+			<result name="login">/Login.jsp</result>
+			<result name="userGroup1">/Login.jsp</result>
+		</action> -->
+		<action name="logout" class="com.med.dic.action.LogoutAction">
+			<result>/Login.jsp</result>
+		</action>
+		<action name="resetPasswordAction" class="com.med.dic.action.ResetPasswordAction"
+			method="doResetPassword">
+			<!-- SMTP configuration -->
+			<!-- <param name="host">smtp.gmail.com</param>
+			<param name="port">587</param>
+			<param name="userName">xuanlt01913@fpt.edu.vn</param>
+			<param name="password">cryonmyshoulder</param> -->
+			<!-- End of SMTP configuration -->
+
+			<!-- <interceptor-ref name="staticParams" />
+			<interceptor-ref name="params" />
+			<interceptor-ref name="validation" />
+			<interceptor-ref name="workflow" />
+			<interceptor-ref name="exception" /> -->
+			<result name="success">/ResetPassword.jsp</result>
+		</action>
+		<action name="loginAction" class="com.med.dic.action.LoginAction">
+			<!--<result name="userGroup2" type="redirectAction"> <param name="nameAction">RepresentativeInfor</param> 
+				</result> -->
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="input">/Login.jsp</result>
+		</action>
+		<action name="pharPopupAction" class="com.med.dic.action.PharmacyPopupAction"
+			method="popUp">
+			<result name="success">/Popup.jsp</result>
+		</action>
+		<action name="selectCity" class="com.med.dic.action.CheckEmailAction"
+			method="emailList">
+			<result name="success" type="json">/haiz.jsp</result>
+		</action>
+		<action name="popupAction" method="openPopup"
+			class="com.med.dic.action.PharmacyPopupAction">
+			<result name="success">/PharmacyPopup.jsp</result>
+		</action>
+		<action name="ajaxAction" class="net.roseindia.employee.action.AutoCompleteAction"
+			method="autoComplete">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="autoCompleteSymptom" class="com.med.dic.action.AutoCompleteAction" method="autoCompleteSymptom">
+		    <result name="success" type="json"></result>
+		</action>
+		<action name="autoCompleteContra" class="com.med.dic.action.AutoCompleteAction" method="autoCompleteContraindications">
+		    <result name="success" type="json"></result>
+		</action>
+		<action name="checkAlreadyEmail" class="com.med.dic.action.CheckEmailAction"
+			method="emailList">
+			<result name="success" type="json">/register.jsp</result>
+		</action>
+		<action name="autoCompleteMedAction" class="com.med.dic.action.AutoCompleteAction"
+			method="autoCompleteMed">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="autoCompleteNewsAction" class="com.med.dic.action.AutoCompleteAction"
+			method="autoCompleteNews">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="autoCompletePharmacyAction" class="com.med.dic.action.AutoCompleteAction"
+			method="autoCompletePhar">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="tim-kiem-thuoc-theo-ten" class="com.med.dic.action.SearchMedicineAction"
+			method="execute">
+			<result name="success">/home.jsp</result>
+		</action>
+		
+		<!-- Representative change information start action -->
+		<action name="chinh-sua-thong-tin-nguoi-dai-dien-action" class="com.med.dic.action.RepresentativeAction" >
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/RepresentativeInfor.jsp</result>
+		</action>
+		<action name="chinh-sua-thong-tin-nguoi-dai-dien" class="com.med.dic.action.RepresentativeAction" >
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/RepresentativeInfor.jsp</result>
+		</action>
+		<action name="huy-bo" class="com.med.dic.action.RepresentativeAction" >
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/RepresentativeInfor.jsp</result>
+		</action>
+		<!-- Representative change information end action -->
+		
+		<action name="tim-kiem-thuoc-theo-ten-action" class="com.med.dic.action.SearchMedicineAction"
+			method="execute">
+			<result name="success">/home.jsp</result>
+		</action>
+		<action name="thuoc-trong-tu-dien" class="com.med.dic.action.AddMedByPharmacyAction" >
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/AddNewMedicineByPharmacy.jsp</result>
+		</action>
+		<action name="thuoc-trong-tu-dien-action" class="com.med.dic.action.AddMedByPharmacyAction" >
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/AddNewMedicineByPharmacy.jsp</result>
+		</action>
+		<!-- <action name="detailMedAction" class="com.med.dic.action.MedicineAction">
+			<result name="success">/home.jsp</result>
+		</action> -->
+
+		<!-- Search pharmacy information by name -->
+		<action name="tim-kiem-nha-thuoc-theo-ten" class="com.med.dic.action.SearchPharmacyAction"
+			method="execute">
+			<result name="success">/search_pharmacyInfo.jsp</result>
+		</action>
+		<action name="tim-kiem-nha-thuoc-theo-ten-action" class="com.med.dic.action.SearchPharmacyAction"
+			method="execute">
+			<result name="success">/search_pharmacyInfo.jsp</result>
+		</action>
+		<!-- Detail pharmacy information -->
+		<action name="thong-tin-hieu-thuoc" class="com.med.dic.action.SearchPharmacyAction"
+			method="execute">
+			<result name="success">/search_pharmacyInfo.jsp</result>
+		</action>
+
+		<action name="nha-thuoc-gan-nhat" class="com.med.dic.action.NearestPharmacyAction"
+			method="nearestLocation">
+			<result name="success">/search_nearestPharmacy.jsp</result>
+			<result name="input">/search_nearestPharmacy.jsp</result>
+		</action>
+		
+		<!-- Register start action -->
+		<action name="completeRegisterAction" class="com.med.dic.action.RegisterAction">
+			<interceptor-ref name="fileUpload">
+				<!-- <param name="maximumSize">1000485760</param> -->
+				<!--<param name="allowedTypes"> image/png,image/gif,image/jpeg,image/pjpeg,image/jpg,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi, 
+					video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie, 
+					video/x-mpeg,video/vnd.rn-realvideo,video/x-scm </param> -->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="login">/register.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/register.jsp</result>
+			<result name="success">/register.jsp</result>
+			<result name="input">/register.jsp</result>
+		</action>
+		<action name="completeStepOne" class="com.med.dic.action.RegisterAction">
+		    <result name="login">/register.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/register.jsp</result>
+			<result name="success">/register.jsp</result>
+			<result name="input">/register.jsp</result>
+		</action>
+		<action name="backToStepOneAction" class="com.med.dic.action.RegisterAction">
+		    <result name="login">/register.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/register.jsp</result>
+			<result name="success">/register.jsp</result>
+		</action>
+		<action name="ignoreStepOneAction" class="com.med.dic.action.RegisterAction">
+		    <result name="login">/register.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/register.jsp</result>
+			<result name="success">/register.jsp</result>
+		</action>
+		<!-- Register end action -->
+		
+		<action name="relatedSelectAction" class="com.med.dic.action.SelectAction"
+			method="loadCityDistrict">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="loadTypeOfBusinessAction" class="com.med.dic.action.SelectAction"
+			method="loadTypeOfBusiness">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="typeOfBusinessAction" class="com.med.dic.action.SelectTagAction"
+			method="typeOfBusiness">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="relatedSelectChangeAction" class="com.med.dic.action.SelectAction"
+			method="loadCitiesDistricts">
+			<result name="success" type="json">/pharmacy_info.jsp</result>
+		</action>
+		<action name="workingHouse" class="com.med.dic.action.SelectAction"
+			method="loadWorkingHour">
+			<result name="success" type="json">/register.jsp</result>
+		</action>
+
+		<!-- Email -->
+		<action name="doSendEmail" class="com.med.dic.action.SendEmailAction"
+			method="sendEmail">
+
+			<!-- SMTP configuration -->
+			<param name="host">smtp.gmail.com</param>
+			<param name="port">587</param>
+			<param name="userName">xuanlt01913@fpt.edu.vn</param>
+			<param name="password">cryonmyshoulder</param>
+			<!-- End of SMTP configuration -->
+
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">*/*</param> <!-- all file types -->
+				<param name="maximumSize">4194304</param> <!-- 4 MB -->
+			</interceptor-ref>
+
+			<interceptor-ref name="staticParams" />
+			<interceptor-ref name="params" />
+			<interceptor-ref name="validation" />
+			<interceptor-ref name="workflow" />
+			<interceptor-ref name="exception" />
+
+			<result name="success" type="redirect">/EmailSuccess.jsp</result>
+			<result name="input">/EmailForm.jsp</result>
+		</action>
+		<!-- tupm add -->
+		<action name="admin_medicineManagementCancel" class="com.med.dic.action.MedicineAction">
+		    <!-- <interceptor-ref name="secureStack2" /> -->
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="login">/Login.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="success">/admin_medicineManagement.jsp</result>
+		</action>
+		<action name="pharmacy_addNewMedCancel">
+		    <interceptor-ref name="secureStack2" />
+		    <result name="login">/Login.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="userGroup2">/AddNewMedicineByPharmacy.jsp</result>
+		</action>
+		<action name="selectTagAction" class="com.med.dic.action.SelectTagAction"
+			method="selectMedTypes">
+			<result name="success" type="json">/search_medicines.jsp</result>
+		</action>
+
+		<action name="user_searchMedAdvanced" class="com.med.dic.action.SearchMedicineAction">
+			<result name="success">/${page}</result>
+		</action>
+
+		<action name="admin_searchMedAdvanced" class="com.med.dic.action.SearchMedicineAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_medicineManagement.jsp</result>
+		</action>
+
+		<action name="admin_copyNewMedicine" class="com.med.dic.action.MedicineAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="pharmacy_copyNewMedicine" class="com.med.dic.action.MedicineAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="userGroup2">/admin_medicineManagement.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="admin_addNewMed" class="com.med.dic.action.MedicineAction" >
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="admin_changeMedInfo" class="com.med.dic.action.MedicineAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_medicineManagement.jsp</result>
+		</action>
+		<action name="admin_updateMed" class="com.med.dic.action.MedicineAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_medicineManagement.jsp</result>
+		</action>
+		<action name="admin_deleteMed" class="com.med.dic.action.MedicineAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_medicineManagement.jsp</result>
+		</action>
+		<action name="admin_restoreMedicine" class="com.med.dic.action.MedicineAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_medicineManagement.jsp</result>
+		</action>
+		<action name="thong-tin-thuoc" class="com.med.dic.action.AddMedByPharmacyAction" >
+			<result name="success">/${page}</result>
+		</action>
+		<action name="thong-tin-thuoc-chi-tiet" class="com.med.dic.action.SearchMedicineAction"
+			method="execute">
+			<result name="success">/${page}</result>
+		</action>
+		<action name="user_showDetailMedInfo_advancedMed" class="com.med.dic.action.SearchMedicineAction"
+			method="execute">
+			<result name="success">/search_medicines.jsp</result>
+		</action>
+		<!-- Check box -->
+		<action name="getCheckBoxAction" class="com.med.dic.action.CheckboxAction">
+			<result name="success">/home.jsp</result>
+		</action>
+
+		<action name="degreeAction" class="com.med.dic.action.SelectTagAction"
+			method="degree">
+			<result name="success" type="json">/register.jsp</result>
+		</action>
+
+		<action name="admin_medicineManagement">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_medicineManagement.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="admin_acceptMedicine">
+		    <interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_acceptMedicine.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="admin_registerNewMedicine">
+			<interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_registerNewMedicine.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="them-vao-danh-muc-thuoc" class="com.med.dic.action.AddMedByPharmacyAction" >
+			<result name="success">/AddNewMedicineByPharmacy.jsp</result>
+		</action>
+		<action name="nha-thuoc-thong-tin-thuoc-chi-tiet" class="com.med.dic.action.AddMedByPharmacyAction" >
+			<result name="success">/AddNewMedicineByPharmacy.jsp</result>
+		</action>
+		<action name="xoa-khoi-danh-muc" class="com.med.dic.action.PharmacyInformationAction">
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/pharmacy_registerNewMedicine.jsp</result>
+		</action>
+		<action name="pharmacy_addNewMed" class="com.med.dic.action.MedicineAction">
+		    <result name="userGroup1">/admin_medicineManagement.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/AddNewMedicineByPharmacy.jsp</result>
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+		</action>
+		<action name="them-moi-thuoc-vao-danh-muc" class="com.med.dic.action.AddMedByPharmacyAction" >
+			<result name="success">/AddNewMedicineByPharmacy.jsp</result>
+		</action>
+		<action name="them-thuoc-vao-nha-thuoc" class="com.med.dic.action.AddMedByPharmacyAction" >
+			<result name="success">/AddNewMedicineByPharmacy.jsp</result>
+		</action>
+		<action name="thay-doi-mat-khau" class="com.med.dic.action.ChangePasswordAction"
+			method="execute">
+			<result name="success">/ChangePassword.jsp</result>
+		</action>
+		<action name="medForPharAction" class="com.med.dic.action.AutoCompleteAction"
+			method="medForPhar">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="degreeSelectBox" class="com.med.dic.action.AutoCompleteAction" method="Degree">
+		    <result name="success" type="json"></result>
+		</action>
+		<action name="medTypeSelectBox" class="com.med.dic.action.SelectTagAction"
+			method="selectMedTypes">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="tra-cuu-thuoc-kiem-duyet-action" class="com.med.dic.action.MedicineAcceptAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_acceptMedicine.jsp</result>
+		</action>
+		<action name="tra-cuu-thuoc-kiem-duyet" class="com.med.dic.action.MedicineAcceptAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_acceptMedicine.jsp</result>
+		</action>
+		<action name="thong-tin-chi-tiet-thuoc-kiem-duyet" class="com.med.dic.action.MedicineAcceptAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_acceptMedicine.jsp</result>
+		</action>
+		<action name="kiem-duyet-thuoc" class="com.med.dic.action.MedicineAcceptAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/admin_acceptMedicine.jsp</result>
+		</action>
+		<action name="huy-kiem-duyet-thuoc" class="com.med.dic.action.MedicineAcceptAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+		    <result name="success">/admin_acceptMedicine.jsp</result>
+		</action>
+		<action name="danh-muc-thuoc-dang-ban-action" class="com.med.dic.action.SearchPharmacyAction" >
+		    <result name="success">/search_pharmacyInfo.jsp</result>
+		</action>
+		<action name="danh-muc-thuoc-dang-ban" class="com.med.dic.action.SearchPharmacyAction" >
+		    <result name="success">/search_pharmacyInfo.jsp</result>
+		</action>
+		<action name="tim-kiem-nha-thuoc-nang-cao-action" class="com.med.dic.action.SearchPharmacyAction">
+		    <result name="success">/search_pharmacyInfo.jsp</result>
+		</action>
+		<action name="tim-nha-thuoc-nang-cao" class="com.med.dic.action.SearchPharmacyAction">
+		    <result name="success">/search_pharmacyInfo.jsp</result>
+		</action>
+		<action name="cac-loai-thuoc" class="com.med.dic.action.MedTypePopupAction">
+		    <result name="success">/MedTypePopup.jsp</result>
+		</action>
+		<action name="trang-chu-danh-muc-thuoc-dang-ban-action" class="com.med.dic.action.SearchMedicineAction">
+		    <result name="success">/${page}</result>
+		</action>
+		<action name="trang-chu-danh-muc-thuoc-dang-ban" class="com.med.dic.action.SearchMedicineAction">
+		    <result name="success">/${page}</result>
+		</action>
+		<action name="thong-tin-hieu-thuoc-chi-tiet" class="com.med.dic.action.SearchMedicineAction" >
+			<result name="success">/${page}</result>
+		</action>
+		
+		<!-- News Start -->
+		<action name="tim-kiem-tin-tuc-action" class="com.med.dic.action.NewsAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="tim-kiem-tin-tuc" class="com.med.dic.action.NewsAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="chi-tiet-ve-tin-tuc" class="com.med.dic.action.NewsAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="xoa-tin-tuc" class="com.med.dic.action.NewsAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="chinh-sua-tin-tuc" class="com.med.dic.action.NewsAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="huy-bo-chinh-sua" class="com.med.dic.action.NewsAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="them-moi-tin-tuc" class="com.med.dic.action.NewsAction" >
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+			<result name="success">/${page}</result>
+		</action>
+		<action name="admin_registerNews">
+		    <interceptor-ref name="secureStack2" />
+			<result name="userGroup2">/RepresentativeInfor.jsp</result>
+			<result name="userGroup1">/admin_registerNews.jsp</result>
+			<result name="login">/Login.jsp</result>
+		</action>
+		<action name="ban-sao-moi" class="com.med.dic.action.NewsAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+		    <result name="success">/${page}</result>
+		</action>
+		<action name="khoi-phuc-tin-tuc" class="com.med.dic.action.NewsAction">
+		    <result name="userGroup2">/RepresentativeInfor.jsp</result>
+		    <result name="login">/Login.jsp</result>
+		    <result name="success">/${page}</result>
+		</action>
+		<!-- News End -->
+		
+		<action name="selectBoxAjax" class="com.med.dic.action.AutoCompleteAction"
+			method="selectBox">
+			<result name="success" type="json">/admin_pharmacyManagement.jsp
+			</result>
+		</action>
+	</package>
+</struts>  

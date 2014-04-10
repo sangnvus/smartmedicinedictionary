@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.Medicine" table="medicines">
+	    <id name="medId" type="int">
+			<column name="MEDICINE_ID" />
+			<generator class="identity" />
+		</id>
+		<property name="deteleFlag" type="string">
+		    <column name="DELETE_FLAG" length="1" not-null="true" />
+		</property>
+		<property name="regDate" type="timestamp" not-null="true">
+			<column name="REG_DATE" />
+		</property>
+		<property name="modDate" type="timestamp">
+			<column name="MOD_DATE" />
+		</property>
+		<property name="regUser" type="string">
+			<column name="REG_USER" length="50" not-null="true"/>
+		</property>
+		<property name="modUser" type="string">
+			<column name="MOD_USER" length="50" not-null="true"/>
+		</property>
+		<property name="medName" type="string">
+			<column name="MEDICINE_NAME" length="150" not-null="true"/>
+		</property>
+		<property name="manufacturer" type="string">
+		    <column name="MANUFACTURER" length="150" not-null="true"/>
+		</property>
+		<property name="indications" type="string">
+		    <column name="INDICATIONS" not-null="true" length="3000" />
+		</property>
+		<property name="contraindications" type="string">
+		    <column name="CONTRAINDICATIONS" not-null="false" length="3000" />
+		</property>
+		<!-- cach su dung -->
+		<property name="dosingAndUse" type="string">
+			<column name="DOSING_AND_USE" not-null="true" length="2500" />
+		</property>
+		<property name="ingredients" type="string">
+			<column name="INGREDIENTS" not-null="true" length="2500"/>
+		</property>
+		<property name="typeOfPackageName" type="string">
+			<column name="TYPE_OF_PACKAGE_NAME" length="50" not-null="false" />
+		</property>
+		<property name="typeOfPackageId" type="int">
+		    <column name="TYPE_OF_PACKAGE_ID" not-null="false" />
+		</property>
+		<property name="warning" type="string">
+			<column name="WARNING"  not-null="false" length="2500" />
+		</property>
+		<!-- bao quan -->
+		<property name="storage" type="string">
+			<column name="STORAGE" length="2000" not-null="false"/>
+		</property>
+		<property name="imgPath" type="string">
+			<column name="IMAGE_PATH" not-null="true" length="150"/>
+		</property>
+		<!-- thuoc goc -->
+		<property name="genericMedicine" type="string">
+			<column name="GENERIC_MEDICINE" length="150" not-null="true" />
+		</property>
+		
+		<!-- ten thuong mai -->
+		<property name="brandName" type="string">
+			<column name="BRANDNAME" length="150" not-null="false" />
+		</property>
+		
+		<!-- thuoc tuong tac -->
+		<property name="interaction" type="string">
+			<column name="INTERACTION_MEDICINE" length="2500" not-null="false"/>
+		</property>
+		
+		<!-- thuoc tuong tu -->
+		<property name="similarMedicine" type="string">
+			<column name="SIMILAR_MEDICINE" length="2500" not-null="false"/>
+		</property>
+		<property name="accept" type="string">
+		    <column name="ACCEPTED_FLAG" length="1" not-null="false" />
+		</property>
+		<property name="addedByPharId" type="int">
+		    <column name="PHARMACY_ID"/>
+		</property>
+		<property name="searchedTime" type="int">
+		    <column name="SEARCHED_TIME" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

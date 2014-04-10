@@ -1,0 +1,43 @@
+#pharmacy {
+	width: 1089px;
+	padding: 40px 0 0 0;
+}
+
+#pharmacy_2 {
+	background-color: rgb(221,228,238);
+	position: relative;
+	display: block; 
+}
+
+#component_left {
+	width: 560px;
+	min-height: 50px;
+	display: block;
+	float: left;
+}
+
+#component_right {
+	width: 460px;
+	background-color: blue;
+	min-height: 50px;
+	display: block;
+	float: left;
+}
+
+.phar-check{
+	position: relative;
+	display: inline-table;
+}
+
+.phar-check-bt{
+	box-shadow: 3px 3px 8px #999999;
+	font-weight: bold;
+	background-color: #2E5DB3;
+	color: white;
+	border: 1px solid rgb(46, 80, 128);
+	min-width: 36px;
+	height: 22px;
+	border-radius: 4px;
+	margin: 20px 15px 0 0;
+	font-size: 15px;
+}

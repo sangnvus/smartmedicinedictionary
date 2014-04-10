@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Từ Điển Thuốc</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_blank"></string>
+    <string name="search_medicine">Tra Cứu Thuốc</string>
+    <string name="medicine_detail">Thông Tin Chi Tiết</string>
+    <string name="historical_using">Nhật Ký Uống Thuốc</string>
+    <string name="diary_using_detail">Thông Tin Đơn Thuốc</string>
+    <string name="diary_title">Thêm Đơn Thuốc</string>
+    <string name="hint_search_medicine">Nhập tên thuốc&#8230;</string>
+    <string name="hint_find_pharmacy">Nhập địa chỉ&#8230;</string>
+    <string name="pharmacy_info"><u>Thông tin</u></string>
+    <string name="medicine_selling"><u>Thuốc bán</u></string>
+    <string name="pharmacy_map"><u>Hiển thị trên bản đồ</u></string>
+    <string name="check_in">Đi</string>
+
+</resources>

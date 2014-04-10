@@ -1,0 +1,64 @@
+#searchMedicines{
+	/* width: 1090px; */
+	min-height:350px;
+	padding-top:30px;
+}
+
+#searchMedicines table tr{
+	height: 40px;
+}
+
+td #textField{
+	border: 1.5px solid black;
+	width: 250px;
+	font-size: 15px;
+	border-radius:5px;
+	border-top-color:rgb(31,31,31);
+	border-left-color:rgb(31,31,31);
+	border-bottom-color:rgb(141,141,141);
+	border-right-color:rgb(141,141,141);
+}
+
+.middle {
+	width: 313px;
+	height: 20px;
+}
+
+.long {
+	width: 658px;
+	height: 20px;
+}
+
+.short{
+	width:250px;
+	height:20px;
+}
+
+.selectbox{
+	font-size: 15px;
+	box-shadow: 3px 3px 8px #999999;
+	border:1px solid gray;
+}
+
+
+.smiddle{
+	width: 321px;
+	height: 30px;
+}
+
+.textbox {
+	box-shadow: 3px 3px 8px #999999;
+	color: #000;
+	background-color: #fff;
+	padding: 3px;
+	margin-bottom: 2px;
+	/* border-width: 1px;
+	border-style: solid;
+	border-top-color: rgb(92, 92, 92);
+	border-right-color: rgb(92, 92, 92);
+	border-bottom-color: rgb(92, 92, 92);
+	border-left-color: rgb(92, 92, 92); */
+	border:1px solid gray;
+	-webkit-border-radius: 4px;
+}
+

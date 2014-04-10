@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_bar" >
+
+        <Button
+            android:id="@+id/buttonSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/go" />
+
+        <EditText
+            android:id="@+id/et_location"
+            android:layout_width="228dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="45dp"
+            android:background="@color/search_bar"
+            android:hint="@string/hint_find_pharmacy"
+            android:inputType="textNoSuggestions|textShortMessage"
+            android:maxLength="100"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/buttonGPS"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/location"
+            android:onClick="onClickMyLocation" />
+    </FrameLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        class="com.google.android.gms.maps.SupportMapFragment" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <ImageView
+            android:id="@+id/search_medicine"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="fpToSearchMedicine"
+            android:scaleType="center"
+            android:src="@drawable/search_medicine_default" />
+
+        <ImageView
+            android:id="@+id/find_location"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="fpOnClick"
+            android:scaleType="center"
+            android:src="@drawable/find_pharmacy" />
+
+        <ImageView
+            android:id="@+id/historical_using"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="fpToDiaryUsing"
+            android:scaleType="center"
+            android:src="@drawable/medicine_diary_default" />
+
+        <ImageView
+            android:id="@+id/introduction"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="fpToAboutUs"
+            android:scaleType="center"
+            android:src="@drawable/about_us_default" />
+    </LinearLayout>
+
+</LinearLayout>

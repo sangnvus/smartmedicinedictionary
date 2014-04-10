@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.PharmacyMedicine" table="pharmacy_medicine">
+	    <composite-id>
+	        <key-property name="pharmacyId" type="int">
+	            <column name="PHARMACY_ID" />
+	        </key-property>
+	        <key-property name="medId" type="int">
+	        	<column name="MEDICINE_ID" />    
+	        </key-property>
+	    </composite-id>
+		<property name="deteleFlag" type="string">
+			<column name="DELETE_FLAG" length="1" not-null="true" />
+		</property>
+		<property name="regDate" type="timestamp" not-null="true">
+			<column name="REG_DATE" />
+		</property>
+		<property name="modDate" type="timestamp">
+			<column name="MOD_DATE" />
+		</property>
+		<property name="regUser" type="string">
+			<column name="REG_USER" length="50" not-null="true" />
+		</property>
+		<property name="modUser" type="string">
+			<column name="MOD_USER" length="50" not-null="true" />
+		</property>
+		<property name="medName" type="string">
+			<column name="MEDICINE_NAME" length="50" not-null="true" />
+		</property>
+		<property name="pharName" type="string">
+			<column name="PHARMACY_NAME" length="50" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

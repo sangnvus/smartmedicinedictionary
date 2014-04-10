@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/medicineImage"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/text_blank"
+                android:padding="0.5dp"
+                android:src="@drawable/medical_case" />
+
+            <TextView
+                android:id="@+id/manufacturerDetail"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/medicineImage"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/manufacturer"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/medium_red"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/manufacturer"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/manufacturerDetail"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/medicineImage"
+                android:text="Sản xuất:"
+                android:textColor="@color/medium_red"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/dark_red"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/line0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/medicineImage"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/distribution"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line0"
+                android:text="Hiệu thuốc đang bán:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/distr1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/distribution"
+                android:orientation="horizontal"
+                android:weightSum="9" >
+
+                <TextView
+                    android:id="@+id/distribution1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_marginLeft="5sp"
+                    android:text="Nhà thuốc 1"
+                    android:textColor="@color/medium_red"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/distributionDetail1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/background"
+                    android:paddingLeft="1dp"
+                    android:paddingRight="1dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/pharmacy_info"
+                    android:textColor="@color/dark_blue" />
+
+                <Button
+                    android:id="@+id/distributionSell1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/background"
+                    android:paddingLeft="1dp"
+                    android:paddingRight="1dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/medicine_selling"
+                    android:textColor="@color/dark_blue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/distr2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/distr1"
+                android:orientation="horizontal"
+                android:weightSum="9" >
+
+                <TextView
+                    android:id="@+id/distribution2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_marginLeft="5sp"
+                    android:text="Nhà thuốc 2"
+                    android:textColor="@color/medium_red"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/distributionDetail2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/background"
+                    android:paddingLeft="1dp"
+                    android:paddingRight="1dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/pharmacy_info"
+                    android:textColor="@color/dark_blue" />
+
+                <Button
+                    android:id="@+id/distributionSell2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/background"
+                    android:paddingLeft="1dp"
+                    android:paddingRight="1dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/medicine_selling"
+                    android:textColor="@color/dark_blue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/distr3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/distr2"
+                android:orientation="horizontal"
+                android:weightSum="9" >
+
+                <TextView
+                    android:id="@+id/distribution3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_marginLeft="5sp"
+                    android:text="Nhà thuốc 3"
+                    android:textColor="@color/medium_red"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/distributionDetail3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/background"
+                    android:paddingLeft="1dp"
+                    android:paddingRight="1dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/pharmacy_info"
+                    android:textColor="@color/dark_blue" />
+
+                <Button
+                    android:id="@+id/distributionSell3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/background"
+                    android:paddingLeft="1dp"
+                    android:paddingRight="1dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/medicine_selling"
+                    android:textColor="@color/dark_blue" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/line1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/distr3"
+                android:layout_marginTop="2dp"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/ingredient"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line1"
+                android:text="Thành phần:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ingredientDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ingredient"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/line2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ingredientDetail"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/indication"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line2"
+                android:text="Chỉ định/Triệu chứng/Công dụng:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/indicationDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/indication"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/line3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/indicationDetail"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/contraindication"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line3"
+                android:text="Chống chỉ định:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/contraindicationDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/contraindication"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/line4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/contraindicationDetail"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/dosing"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line4"
+                android:text="Liều lượng và cách dùng:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dosingDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dosing"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/line5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dosingDetail"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/typeOfPackage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line5"
+                android:text="Dạng đóng gói:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/typeOfPackageDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/typeOfPackage"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/line6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/typeOfPackageDetail"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/warning"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line6"
+                android:text="Cảnh báo:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/warningDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/warning"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/line7"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/warningDetail"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/storage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line7"
+                android:text="Bảo quản:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/storageDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/storage"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/line8"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/storageDetail"
+                android:contentDescription="@string/text_blank"
+                android:src="@drawable/line_gray" />
+
+            <TextView
+                android:id="@+id/interaction"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line8"
+                android:text="Tương tác thuốc:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/interactionDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/interaction"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <ImageView
+            android:id="@+id/search_medicine"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="mdToSearchMedicine"
+            android:scaleType="center"
+            android:src="@drawable/search_medicine" />
+
+        <ImageView
+            android:id="@+id/find_location"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="smToFindLocation"
+            android:scaleType="center"
+            android:src="@drawable/find_pharmacy_default" />
+
+        <ImageView
+            android:id="@+id/historical_using"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="smToDiaryUsing"
+            android:scaleType="center"
+            android:src="@drawable/medicine_diary_default" />
+
+        <ImageView
+            android:id="@+id/introduction"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="smToAboutUs"
+            android:scaleType="center"
+            android:src="@drawable/about_us_default" />
+    </LinearLayout>
+
+</LinearLayout>

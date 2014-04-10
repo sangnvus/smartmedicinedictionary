@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:ws="http://jax-ws.dev.java.net/spring/core" xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://jax-ws.dev.java.net/spring/core http://jax-ws.dev.java.net/spring/core.xsd
+        http://jax-ws.dev.java.net/spring/servlet http://jax-ws.dev.java.net/spring/servlet.xsd"
+	default-autowire="byName">
+	<wss:binding url="/smdservice">
+		<wss:service>
+			<ws:service bean="#smdWS" />
+		</wss:service>
+	</wss:binding>
+	<!-- Database Configuration -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/properties/database.properties
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- Hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+
+		<property name="mappingResources">
+			<list>
+				<value>Medicine.hbm.xml</value>
+				<value>Pharmacy.hbm.xml</value>
+				<value>City.hbm.xml</value>
+				<value>District.hbm.xml</value>
+				<value>Representative.hbm.xml</value>
+				<value>SMDUser.hbm.xml</value>
+				<value>Hour.hbm.xml</value>
+				<value>Minute.hbm.xml</value>
+				<value>MedicineType.hbm.xml</value>
+				<value>Degrees.hbm.xml</value>
+				<value>PharmacyMedicine.hbm.xml</value>
+				<value>TypeOfBusiness.hbm.xml</value>
+				<value>News.hbm.xml</value>
+				<value>Font.hbm.xml</value>
+				<value>VisitTime.hbm.xml</value>
+				<value>TypeOfMedicine.hbm.xml</value>
+				<value>Advertise.hbm.xml</value>
+				<!--<value>TrackSearchedTime.hbm.xml</value>-->
+			</list>
+		</property>
+	</bean>
+
+	<!-- Beans Declaration -->
+	<bean id="searchMedicineAction" class="com.med.dic.action.SearchMedicineAction">
+		<property name="medicineDAO" ref="medicineDAO" />
+	</bean>
+	<bean id="medicineAction" class="com.med.dic.action.MedicineAction">
+		<property name="medicineDAO" ref="medicineDAO" />
+		<property name="medTypeDAO" ref="medTypeDAO" />
+	</bean>
+
+	<bean id="registerAction" class="com.med.dic.action.RegisterAction">
+		<property name="pharmacyDAO" ref="pharmacyDAO" />
+		<property name="smdUserDAO" ref="smdUserDAO" />
+		<property name="repDAO" ref="repDAO" />
+	</bean>
+	<bean id="interceptorAction" class="com.med.dic.interceptor.AuthenticationInterceptor">
+		<property name="repDAO" ref="repDAO" />
+	</bean>
+	<bean id="resetPasswordAction" class="com.med.dic.action.ResetPasswordAction">
+		<property name="smdUserDAO" ref="smdUserDAO" />
+		<property name="repDAO" ref="repDAO" />
+	</bean>
+	<bean id="nearestPharmacyAction" class="com.med.dic.action.NearestPharmacyAction">
+		<property name="pharmacyDAO" ref="pharmacyDAO" />
+	</bean>
+	<bean id="pharmacyAction" class="com.med.dic.action.PharmacyPopupAction">
+		<property name="pharmacyDAO" ref="pharmacyDAO" />
+		<property name="repDAO" ref="repDAO" />
+	</bean>
+	<!-- tupm add -->
+	<!-- <bean id="PharmacyMedicineAction" class="com.med.dic.action.PharmacyMedicineAction"> 
+		<property name="pharMedDAO" ref="pharMedDAO" /> </bean> -->
+	<!-- / tupm add -->
+
+	<bean id="medicineDAO" class="com.med.dic.dao.impl.MedicineDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cityDAO" class="com.med.dic.dao.impl.CityDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="districtDAO" class="com.med.dic.dao.impl.DistrictDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="pharmacyDAO" class="com.med.dic.dao.impl.PharmacyDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="smdUserDAO" class="com.med.dic.dao.impl.SMDUserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="repDAO" class="com.med.dic.dao.impl.RepresentativeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="medTypeDAO" class="com.med.dic.dao.impl.MedicineTypeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="pharMedDAO" class="com.med.dic.dao.impl.PharmacyMedicineDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="visitTimeDAO" class="com.med.dic.dao.impl.VisitTimeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="typeOfMedDAO" class="com.med.dic.dao.impl.TypeOfMedicineDAOImpl">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="newsDAO" class="com.med.dic.dao.impl.NewsDAOImpl">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="advertiseDAO" class="com.med.dic.dao.impl.AdvertiseDAOImpl">
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="smdWS" class="com.med.dic.webservice.SMDWebserviceImpl">
+		<property name="medicineDAO" ref="medicineDAO" />
+		<property name="medTypeDAO" ref="medTypeDAO" />
+		<property name="typeOfMedDAO" ref="typeOfMedDAO" />
+		<property name="pharmacyDAO" ref="pharmacyDAO" />
+	</bean>
+</beans>
