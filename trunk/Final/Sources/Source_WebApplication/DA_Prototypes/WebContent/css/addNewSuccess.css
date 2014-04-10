@@ -1,0 +1,21 @@
+#ans-left, #ans-right{
+	position: relative;
+	display: inline-table;
+	width:450px;
+	height: 180px;
+	background-color: orange;
+	border:1px solid #dcdcdc;
+}
+
+#ans-head{
+	width:100%;
+}
+
+#ans-head #smButton{
+	margin:0 25px;
+	position: relative;
+	display: inline;
+}
+
+
+

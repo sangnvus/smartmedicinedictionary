@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.Advertise" table="advertise">
+	    <id name="advertiseId" type="int">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property name="regDate" type="timestamp" not-null="true">
+			<column name="REG_DATE" />
+		</property>
+		<property name="title" type="string">
+			<column name="TITLE" length="150" not-null="true" />
+		</property>
+		<property name="imgPath" type="string">
+			<column name="IMG_PATH" length="100" not-null="true" />
+		</property>
+		<property name="content" type="string">
+			<column name="CONTENT" length="200" not-null="true" />
+		</property>
+		<property name="link" type="string">
+			<column name="LINK" length="200" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

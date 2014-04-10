@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.District" table="districts">
+	    <id name="districtId" type="int">
+			<column name="DISTRICT_ID" />
+			<generator class="identity" />
+		</id>
+		<property name="deteleFlag" type="string">
+		    <column name="DELETE_FLAG" length="1" not-null="true" />
+		</property>
+		<property name="regDate" type="timestamp">
+			<column name="REG_DATE" />
+		</property>
+		<property name="modDate" type="timestamp">
+			<column name="MOD_DATE" />
+		</property>
+		<property name="regUser" type="string">
+			<column name="REG_USER" length="150" not-null="true"/>
+		</property>
+		<property name="modUser" type="string">
+			<column name="MOD_USER" length="150" not-null="true"/>
+		</property>
+		<property name="districtName" type="string">
+			<column name="DISTRICT_NAME" length="100" not-null="true"/>
+		</property>
+		<property name="lon" type="double">
+		    <column name="LONGITUDE"  not-null="true"/>
+		</property>
+		<property name="lat" type="double">
+			<column name="LATITUDE" not-null="true" />
+		</property>
+		<property name="cityId" type="int">
+		    <column name="CITY_ID" not-null="true" />
+		</property>
+		<property name="northLat" type="double">
+		    <column name="NORTH_LAT"  not-null="true"/>
+		</property>
+		<property name="northLong" type="double">
+			<column name="NORTH_LONG" not-null="true" />
+		</property>
+		<property name="southLat" type="double">
+		    <column name="SOUNTH_LAT"  not-null="true"/>
+		</property>
+		<property name="sounthLong" type="double">
+			<column name="SOUNTH_LONG" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

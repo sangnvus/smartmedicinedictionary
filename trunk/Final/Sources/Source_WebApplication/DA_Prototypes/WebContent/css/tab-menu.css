@@ -1,0 +1,78 @@
+#tabmenu {
+	margin: 60px 0px 0px 0px;
+	padding: 0px;
+	z-index: 1;
+	padding-left: 50px;
+}
+
+#tabmenu li {
+	display: inline;
+	overflow: hidden;
+	list-style-type: none;
+	min-width: 100px;
+}
+
+#tabmenu .tab,#tabmenu .active {
+	color: white;
+	background: rgb(47, 100, 168);
+	padding: 10px 15px 0px 15px;
+	margin: -6px;
+	text-decoration: none;
+	cursor: hand;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 70px;
+	text-align: center;
+	display: inline;
+	position: relative;
+	font-size: 16px;
+	/* border-top:2px solid gray;
+	border-left:2px solid gray;
+	border-right:2px solid gray; */
+}
+
+#tabmenu .active {
+	color: black;
+	background: rgb(216, 229, 255);
+	border-bottom: 2px solid rgb(221, 228, 238);
+	z-index: 1;
+	height: 50px;
+}
+
+#content {
+	box-shadow: 0px 2px 30px rgb(167, 177, 192);
+	background-color: rgb(216, 229, 255);
+	padding: 10px 6px 10px 10px;
+	z-index: 2;
+	border-radius: 15px 0;
+	min-height: 100px;
+	/* font-size: 17px; */
+	border: 1px solid #dcdcdc;
+	width: 95%;
+	margin: 0 auto 20px auto;
+}
+
+#content #rootElement{
+	box-shadow:none;
+}
+
+#n_table {
+	text-align: left;
+	width: 900px;
+	margin: 30px auto;
+	padding: 5px;
+}
+
+#n_table #s_text {
+	text-align: right;
+	margin-right: 28px;
+}
+
+#n_table a {
+	color: #B80000;
+	text-decoration: none;
+}
+
+#n_table a:hover {
+	color: orange;
+	text-decoration: underline;
+}

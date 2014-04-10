@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/pharmarcySell"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="Tên nhà thuốc"
+            android:textColor="@color/dark_red"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/pharmacySpn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/medicineSellingLv"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/customshape" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <ImageView
+            android:id="@+id/search_medicine"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="msToSearchMedicine"
+            android:scaleType="center"
+            android:src="@drawable/search_medicine" />
+
+        <ImageView
+            android:id="@+id/find_location"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="smToFindLocation"
+            android:scaleType="center"
+            android:src="@drawable/find_pharmacy_default" />
+
+        <ImageView
+            android:id="@+id/historical_using"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="smToDiaryUsing"
+            android:scaleType="center"
+            android:src="@drawable/medicine_diary_default" />
+
+        <ImageView
+            android:id="@+id/introduction"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange_btn"
+            android:contentDescription="@string/text_blank"
+            android:onClick="smToAboutUs"
+            android:scaleType="center"
+            android:src="@drawable/about_us_default" />
+    </LinearLayout>
+
+</LinearLayout>

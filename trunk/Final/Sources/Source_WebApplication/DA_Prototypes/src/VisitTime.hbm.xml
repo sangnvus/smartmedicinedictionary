@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.VisitTime" table="visit_time">
+	    <composite-id>
+	        <key-property name="ipAddress" type="string">
+	            <column name="IP_ADDRESS" length="15" not-null="true" />
+	        </key-property>
+	        <key-property name="regDate" type="timestamp">
+	        	<column name="REG_DATE" />    
+	        </key-property>
+	    </composite-id>
+		<property name="modDate" type="timestamp">
+			<column name="MOD_DATE" />
+		</property>
+		<property name="visitTime" type="int">
+		    <column name="VISIT_TIME" not-null="true"></column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.TrackSearchedTime" table="track_searched_time">
+	    <composite-id>
+	        <key-property name="type" type="int">
+	            <column name="TYPE" length="15" not-null="true" />
+	        </key-property>
+	        <key-property name="monthYear" type="string">
+	        	<column name="MONTH_YEAR" />    
+	        </key-property>
+	        <key-property name="typeId" type="int">
+	            <column name="TYPE_ID" not-null="true" />
+	        </key-property>
+	    </composite-id>
+		<property name="searchedTime" type="int">
+		    <column name="SEARCHED_TIME" not-null="true" />
+		</property>
+		<property name="typeName" type="int">
+		    <column name="TYPE_NAME" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/diaryMedicineTv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="2.5dp"
+        android:singleLine="true"
+        android:text="a"
+        android:textColor="@color/black" />
+    
+    <TextView
+        android:id="@+id/diaryMedicineIdTv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="2.5dp"
+        android:singleLine="true"
+        android:layout_below="@id/diaryMedicineTv"
+         android:text="b"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/imgArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/arrow_list" />
+</RelativeLayout>

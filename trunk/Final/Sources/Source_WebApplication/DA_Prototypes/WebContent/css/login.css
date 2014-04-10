@@ -1,0 +1,145 @@
+/* Mask for background, by default is not display */
+
+#login_container,#change_password_container,#reset_password_container {
+	margin:121px auto 1px auto;
+	box-shadow: 0px 1px 5px #999999;
+	width: 1000px;
+	min-height: 500px;
+	padding-bottom: 30px;
+	position: relative;
+	background-repeat: no-repeat;
+}
+#login_container{
+background:url("images/LoginBg.jpg");
+}
+#change_password_container {
+	background:url("images/Chang_password.jpg");
+}
+
+#reset_password_container{
+	background:url("images/Reset_password.jpg");
+}
+
+.signin{
+	margin:150px 0 0 610px;
+	width:250px;
+	
+}
+
+#mask {
+	background-color: #C2C2C2;
+	display: none;
+	/* Mask for background, by default is not display */
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+/* You can customize to your needs  */
+.login-popup {
+	width:400px;
+	height:300px;
+	background-color: white;
+	display: none;
+	padding: 0;
+	border: 1px solid bisque;
+	box-shadow: 0 0 136px blanchedalmond;
+	float: left;
+	font-size: 19px;
+	position: fixed;
+	top: 375px;
+	left: 50%;
+	z-index: 99999;
+	border-radius: 15px;
+}
+
+.login-popup #login_content{
+	margin: 0 auto;
+	width: 300px;
+	padding:18px;
+}
+
+#close { /*Position the close button*/
+	float: right;
+	border: 1px solid #80000;
+	color: red;
+	font-weight: bold;
+	background-color: white;
+	margin: 3px 5px;	
+	border-radius:5px;
+}
+
+#close:HOVER{
+	background-color: black;
+}
+
+fieldset {
+	border: none;
+}
+
+form.signin .textbox label {
+	display: block;
+	padding-bottom: 7px;
+}
+
+form.signin .textbox span {
+	display: block;
+}
+
+form.signin p,form.signin span {
+	color: #black;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+form.signin .textbox input {
+	/* Mask for background, by default is not display */
+	border-bottom: 1px solid rgb(8,27,167);
+	border-left: 1px solid rgb(8,27,167);
+	border-right: 1px solid rgb(8,27,167);
+	border-top: 1px solid rgb(8,27,167);
+	color: black;
+	border-radius: 3px 3px 3px 3px;
+	font: 13px Arial, Helvetica, sans-serif;
+	padding: 6px 6px 4px;
+	width: 200px;
+}
+
+.button {
+	border-color: #dcdcdc;
+	border-width: 1px;
+	border-radius: 4px 4px 4px 4px;
+background: url("images/my-menu.jpg");
+	background-repeat: repeat-x;
+	cursor: pointer;
+	display: inline-block;
+	padding: 6px 6px 4px;
+	margin-top: 10px auto;
+	font: 14px;
+	width: 114px;
+	color: white;
+}
+
+.button:hover {
+	background: black;
+}
+
+#login_header{
+	width: 97.5%;
+	height: 40px;
+	color: white;
+	font-size: 28px;
+	text-align: left;
+	background: url("images/my-menu.jpg");
+	background-repeat: repeat-x;
+	border-radius:15px 15px 0 0;
+	padding: 3px 5px;
+}
+#passwordCss {
+	color: rgb(35, 35, 189);
+	font-weight: bold;
+}

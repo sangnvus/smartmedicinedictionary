@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.TypeOfMedicine" table="TYPE_OF_MEDICINE">
+	     <composite-id>
+	        <key-property name="medId" type="int">
+	            <column name="MEDICINE_ID" />
+	        </key-property>
+	        <key-property name="typeOfPackageId" type="int">
+	        	<column name="TYPE_OF_PACKAGE_ID" />    
+	        </key-property>
+	    </composite-id>
+		<property name="typeOfPackageName" type="string">
+		    <column name="TYPE_OF_PACKAGE_NAME" length="100" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

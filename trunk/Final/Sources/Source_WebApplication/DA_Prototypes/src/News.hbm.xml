@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.med.dic.model.News" table="news">
+	    <id name="id" type="int">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property name="deteleFlag" type="string">
+			<column name="DELETE_FLAG" length="1" not-null="true" />
+		</property>
+		<property name="regDate" type="timestamp" not-null="true">
+			<column name="REG_DATE" />
+		</property>
+		<property name="modDate" type="timestamp">
+			<column name="MOD_DATE" />
+		</property>
+		<property name="regUser" type="string">
+			<column name="REG_USER" length="50" not-null="true" />
+		</property>
+		<property name="modUser" type="string">
+			<column name="MOD_USER" length="50" not-null="true" />
+		</property>
+		<property name="title" type="string">
+			<column name="TITLE" length="150" not-null="true" />
+		</property>
+		<property name="imgPath" type="string">
+			<column name="IMG_PATH" length="150" not-null="true" />
+		</property>
+		<property name="content" type="string">
+			<column name="CONTENT" length="5000" not-null="true" />
+		</property>
+		<property name="author" type="string">
+		    <column name="AUTHOR" length="150" not-null="true" />
+		</property>
+		<property name="subContent" type="string">
+		    <column name="SUB_CONTENT" length="150" not-null="true" />
+		</property>
+		<property name="imgDesc" type="string">
+		    <column name="IMG_DESCRIPTION" length="150" not-null="false" />
+		</property>
+		<property name="searchedTime" type="int">
+		    <column name="SEARCHED_TIME" not-null="false" />
+		</property>
+	</class>
+</hibernate-mapping>
